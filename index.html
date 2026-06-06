@@ -145,7 +145,7 @@ const setupScreen = document.getElementById('setup-screen');
 const apiKeyInput = document.getElementById('api-key-input');
 const saveKeyBtn  = document.getElementById('save-key-btn');
 const setupError  = document.getElementById('setup-error');
-function getApiKey() { return sessionStorage.getItem('anthro_key') || ''; }
+function getApiKey() { return localStorage.getItem('anthro_key') || ''; }
 function initSetup() {
   if (getApiKey()) { setupScreen.style.display = 'none'; return; }
   setupScreen.style.display = 'flex';
@@ -154,7 +154,7 @@ saveKeyBtn.addEventListener('click', () => {
   const key = apiKeyInput.value.trim();
   if (!key.startsWith('sk-ant-')) { setupError.style.display = 'block'; return; }
   setupError.style.display = 'none';
-  sessionStorage.setItem('anthro_key', key);
+  localStorage.setItem('anthro_key', key);
   setupScreen.style.display = 'none';
 });
 
